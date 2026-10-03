@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+.pytest_cache/
+instance/
+pqc/lib/
+kyber/ref/lib/
+kyber/ref/test/test_kyber512
+kyber/ref/test/test_kyber768
+kyber/ref/test/test_kyber1024
+kyber/ref/test/test_vectors512
+kyber/ref/test/test_vectors768
+kyber/ref/test/test_vectors1024
+kyber/ref/test/test_speed*
+!kyber/ref/test/*.c
+!kyber/ref/test/*.h
+.DS_Store
+tests/browser/node_modules/
