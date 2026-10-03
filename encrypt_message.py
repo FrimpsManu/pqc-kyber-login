@@ -1,6 +1,7 @@
 """Assignment run: encrypt and decrypt a message with Kyber768 + AES-256-GCM.
 
     python encrypt_message.py                      # encrypt, decrypt, save evidence
+    python encrypt_message.py --brief              # same, keys shortened on screen
     python encrypt_message.py --verify FILE.json   # decrypt a saved result again
 """
 import argparse
@@ -25,9 +26,18 @@ def wrap(hex_string, width=64):
     return "\n".join("    " + line for line in textwrap.wrap(hex_string, width))
 
 
-def run():
-    lines = []
-    out = lines.append
+def run(brief=False):
+    lines = []    # full report, saved to TXT_PATH
+    screen = []   # what is printed; long keys shortened with --brief
+
+    def out(text):
+        lines.append(text)
+        screen.append(text)
+
+    def out_hex(hex_string):
+        lines.append(wrap(hex_string))
+        screen.append(f"    {hex_string[:48]}... ({len(hex_string) // 2} bytes, full value in {TXT_PATH})"
+                      if brief else wrap(hex_string))
 
     out("=" * 72)
     out("POST-QUANTUM ENCRYPTION - Kyber768 (ML-KEM-768) + AES-256-GCM")
@@ -51,14 +61,14 @@ def run():
     out("STEP 1 - Receiver generates a Kyber768 key pair")
     out(f"    public key: {len(public_key)} bytes, secret key: {len(secret_key)} bytes")
     out("    public key (hex):")
-    out(wrap(public_key.hex()))
+    out_hex(public_key.hex())
     out("")
 
     # Sender: encapsulate a shared secret and encrypt the message with it.
     sent = hybrid.encrypt(public_key, MESSAGE.encode())
     out("STEP 2 - Sender encapsulates a shared secret with the public key")
     out(f"    Kyber ciphertext: {len(sent['kem_ciphertext'])} bytes (hex):")
-    out(wrap(sent["kem_ciphertext"].hex()))
+    out_hex(sent["kem_ciphertext"].hex())
     out(f"    sender's shared secret: {sent['shared_secret'].hex()}")
     out("")
     out("STEP 3 - Sender encrypts the message with AES-256-GCM (key = shared secret)")
@@ -95,10 +105,9 @@ def run():
     out(f"    tampered ciphertext rejected:    {'YES' if tamper_rejected else 'NO'}")
     out("=" * 72)
 
-    report = "\n".join(lines)
-    print(report)
+    print("\n".join(screen))
     with open(TXT_PATH, "w") as f:
-        f.write(report + "\n")
+        f.write("\n".join(lines) + "\n")
 
     # Everything needed to decrypt again later (this is a demo key pair).
     with open(JSON_PATH, "w") as f:
@@ -135,7 +144,9 @@ def verify(path):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--brief", action="store_true",
+                        help="shorten the public key and Kyber ciphertext on screen")
     parser.add_argument("--verify", metavar="FILE.json",
                         help="decrypt a previously saved result")
     args = parser.parse_args()
-    sys.exit(verify(args.verify) if args.verify else run())
+    sys.exit(verify(args.verify) if args.verify else run(args.brief))

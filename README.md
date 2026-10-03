@@ -25,8 +25,8 @@ Machine-readable copy with the keys: [`evidence/assignment_output.json`](evidenc
 |---|---|
 | **Message** | `Dear All Good luck with your Job interview with Bloomberg` |
 | **Algorithm** | Kyber768 (ML-KEM-768) key encapsulation + AES-256-GCM |
-| **Ciphertext (hex, 73 bytes)** | `52dd096948c9860b6a80c6a347deb6e4e611c3a86122fdf5a3c85f944fae647fc07cbf89ff1a838ce65764ac2a15bfce2bbd97718057b36f708d1a9c892026e4dd9bf2482c6e8175c5` |
-| **Ciphertext (base64)** | `Ut0JaUjJhgtqgMajR9625OYRw6hhIv31o8hflE+uZH/AfL+J/xqDjOZXZKwqFb/OK72XcYBXs29wjRqciSAm5N2b8kgsboF1xQ==` |
+| **Ciphertext (hex, 73 bytes)** | `0d3deecc00201d06f22161ecc09b19d90545a4261e844b88a9e07d5aeb115712dc15cae7f446a0b31e847492692fb18951aca24c49ca1dfceaaa0b8bf8ae8037db194a4bd6e344155e` |
+| **Ciphertext (base64)** | `DT3uzAAgHQbyIWHswJsZ2QVFpCYehEuIqeB9WusRVxLcFcrn9Eagsx6EdJJpL7GJUayiTEnKHfzqqguL+K6AN9sZSkvW40QVXg==` |
 | **Decrypted text** | `Dear All Good luck with your Job interview with Bloomberg` |
 | **Checks** | shared secrets match ✔ · decrypted text equals original ✔ · tampered ciphertext rejected ✔ |
 
@@ -38,6 +38,8 @@ You can decrypt the saved result again yourself:
 ```sh
 python encrypt_message.py --verify evidence/assignment_output.json
 ```
+
+`--brief` shortens the long public key and Kyber ciphertext on screen; the saved file always has the full values.
 
 ### Why Kyber + AES?
 
