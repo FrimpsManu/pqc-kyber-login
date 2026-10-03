@@ -1,0 +1,22 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.9.6, pytest-8.4.2, pluggy-1.6.0 -- /Users/augus/pqc-kyber-login/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/augus/pqc-kyber-login
+collecting ... collected 14 items
+
+tests/test_pqc.py::test_key_and_ciphertext_sizes PASSED                  [  7%]
+tests/test_pqc.py::test_shared_secret_round_trip PASSED                  [ 14%]
+tests/test_pqc.py::test_wrong_secret_key_gives_different_secret PASSED   [ 21%]
+tests/test_pqc.py::test_tampered_kyber_ciphertext_gives_different_secret PASSED [ 28%]
+tests/test_pqc.py::test_rejects_wrong_lengths PASSED                     [ 35%]
+tests/test_pqc.py::test_assignment_message_round_trip PASSED             [ 42%]
+tests/test_pqc.py::test_tampered_message_is_rejected PASSED              [ 50%]
+tests/test_pqc.py::test_signup_then_login PASSED                         [ 57%]
+tests/test_pqc.py::test_wrong_password PASSED                            [ 64%]
+tests/test_pqc.py::test_password_never_sent_in_clear PASSED              [ 71%]
+tests/test_pqc.py::test_tampered_login_rejected PASSED                   [ 78%]
+tests/test_pqc.py::test_handshake_key_is_single_use PASSED               [ 85%]
+tests/test_pqc.py::test_dashboard_requires_login PASSED                  [ 92%]
+tests/test_pqc.py::test_dashboard_encrypts_message PASSED                [100%]
+
+============================== 14 passed in 1.93s ==============================

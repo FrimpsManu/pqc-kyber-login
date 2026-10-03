@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Kyber Login{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="{{ url_for('index') }}">Kyber Login</a>
+      <nav>
+        {% if session.user %}
+          <span class="who">{{ session.user }}</span>
+          <a href="{{ url_for('logout') }}">Log out</a>
+        {% else %}
+          <a href="{{ url_for('login') }}">Log in</a>
+          <a href="{{ url_for('signup') }}">Sign up</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="wrap foot">
+    Post-quantum key exchange with Kyber768 (ML-KEM-768), reference code from
+    <a href="https://github.com/pq-crystals/kyber">pq-crystals/kyber</a>.
+  </footer>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

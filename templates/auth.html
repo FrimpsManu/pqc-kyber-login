@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}{{ "Log in" if mode == "login" else "Sign up" }} · Kyber Login{% endblock %}
+{% block content %}
+<section class="auth">
+  <h1>{{ "Log in" if mode == "login" else "Create an account" }}</h1>
+
+  <form id="auth-form" data-purpose="{{ mode }}" autocomplete="on">
+    <label>Username
+      <input name="username" required minlength="3" maxlength="32"
+             autocomplete="username" autofocus>
+    </label>
+    <label>Password
+      <input name="password" type="password" required
+             {% if mode == "signup" %}minlength="8"{% endif %}
+             autocomplete="{{ 'current-password' if mode == 'login' else 'new-password' }}">
+    </label>
+    {% if mode == "signup" %}
+    <label>Confirm password
+      <input name="confirm" type="password" required minlength="8" autocomplete="new-password">
+    </label>
+    {% endif %}
+    <button type="submit">{{ "Log in" if mode == "login" else "Sign up" }}</button>
+    <p id="status" class="status" role="status"></p>
+  </form>
+
+  <p class="switch">
+    {% if mode == "login" %}
+      No account yet? <a href="{{ url_for('signup') }}">Sign up</a>
+    {% else %}
+      Already registered? <a href="{{ url_for('login') }}">Log in</a>
+    {% endif %}
+  </p>
+
+  <p class="note">
+    Your username and password are encrypted in this browser before they are sent.
+    The browser and server agree on a one-time key using Kyber768, a post-quantum
+    key exchange, and that key encrypts the form with AES-256-GCM.
+  </p>
+</section>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='vendor/mlkem768.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+{% endblock %}

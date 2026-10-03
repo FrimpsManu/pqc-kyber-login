@@ -1,0 +1,7 @@
+Target: http://127.0.0.1:8000   user: augustine
+Sign-up -> http://127.0.0.1:8000/dashboard
+Dashboard decrypted text: Dear All Good luck with your Job interview with Bloomberg   checks: Yes,Yes
+Wrong password message: Wrong username or password.
+Login -> http://127.0.0.1:8000/dashboard
+API requests captured: 6; password visible in any request body: no
+Example /api/login request body (truncated): {"kid":"qdlY11OmvqEF7TJX9s1Fug","kem_ciphertext":"c/kbKbrP5evKhfynZ4x+QiDHE0NolojoZGgCu1odtvI72cNTNG9lbgQtiuVl92JP9VSlhTjRz3d7f/b/VMI1pB3jgctPhp2ZuYP5QSrve9BTiQwKXnNeCW66Xk7zERUxPWP5Qt9eL/mT15SOomEmjPvP1WD8eThhbuX2ZC9xPRh4hoWmX0WMLLJxDhfp1EKcvRo2DVOE54ZwtcvyUWlosPf+hKr7L/JtyfCyno1vHxnTz1D/kXWHayVKQj...

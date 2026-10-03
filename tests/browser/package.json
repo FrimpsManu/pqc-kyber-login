@@ -1,0 +1,11 @@
+{
+  "name": "pqc-kyber-login-browser-test",
+  "private": true,
+  "description": "Drives the real website in Chrome: sign up, encrypt the message, wrong password, log in. Saves screenshots.",
+  "scripts": {
+    "test": "node e2e.js http://127.0.0.1:8000 ../../evidence/screenshots local"
+  },
+  "dependencies": {
+    "puppeteer-core": "^24.0.0"
+  }
+}

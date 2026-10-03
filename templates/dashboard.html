@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Dashboard · Kyber Login{% endblock %}
+{% block content %}
+<h1>Welcome, {{ user }}</h1>
+
+{% if trace %}
+<section class="panel">
+  <h2>How your {{ "sign-up" if trace.purpose == "signup" else "login" }} was protected</h2>
+  <p>Recorded {{ trace.time }}. This is what your browser actually sent; your password
+     was never transmitted in readable form.</p>
+  <table class="kv">
+    <tr><th>Server public key</th><td>{{ trace.public_key_bytes }} bytes, new for this login, used once</td></tr>
+    <tr><th>Kyber ciphertext</th><td>{{ trace.kem_ciphertext_bytes }} bytes · <code>{{ trace.kem_ciphertext_head }}…</code></td></tr>
+    <tr><th>AES-GCM nonce</th><td><code>{{ trace.nonce }}</code></td></tr>
+    <tr><th>Encrypted credentials</th><td>{{ trace.payload_bytes }} bytes · <code class="wrap-any">{{ trace.payload_b64 }}</code></td></tr>
+    <tr><th>Shared key fingerprint</th><td><code>{{ trace.secret_fingerprint }}</code> (SHA-256, first 8 bytes)</td></tr>
+  </table>
+</section>
+{% endif %}
+
+<section class="panel">
+  <h2>Encrypt a message</h2>
+  <p>The server generates a Kyber768 key pair, encapsulates a shared secret, encrypts
+     the message with AES-256-GCM, then decapsulates and decrypts it again.</p>
+  <form method="post" class="encrypt-form">
+    <label>Message
+      <textarea name="message" rows="2" maxlength="2000">{{ message }}</textarea>
+    </label>
+    <button type="submit">Encrypt and decrypt</button>
+  </form>
+
+  {% if result %}
+  <div class="result">
+    <h3>Ciphertext</h3>
+    <p class="muted">{{ result.ciphertext_bytes }} bytes (message + 16-byte authentication tag)</p>
+    <p class="label">Hex</p>
+    <pre>{{ result.ciphertext_hex }}</pre>
+    <p class="label">Base64</p>
+    <pre>{{ result.ciphertext_b64 }}</pre>
+
+    <h3>Decrypted text</h3>
+    <pre class="plain">{{ result.decrypted }}</pre>
+
+    <table class="kv checks">
+      <tr><th>Shared secrets match</th><td>{{ "Yes" if result.secrets_match else "No" }}</td></tr>
+      <tr><th>Decrypted text equals original</th><td>{{ "Yes" if result.text_matches else "No" }}</td></tr>
+    </table>
+
+    <details>
+      <summary>Kyber details</summary>
+      <p class="label">AES-GCM nonce</p>
+      <pre>{{ result.nonce }}</pre>
+      <p class="label">Shared secret (sender)</p>
+      <pre>{{ result.sender_secret }}</pre>
+      <p class="label">Shared secret (receiver, after decapsulation)</p>
+      <pre>{{ result.receiver_secret }}</pre>
+      <p class="label">Kyber ciphertext (1088 bytes)</p>
+      <pre>{{ result.kem_ciphertext }}</pre>
+      <p class="label">Public key (1184 bytes)</p>
+      <pre>{{ result.public_key }}</pre>
+    </details>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}
