@@ -1,7 +1,7 @@
-Target: https://web-production-0c4f4e.up.railway.app   user: augustine60398
-Sign-up -> https://web-production-0c4f4e.up.railway.app/dashboard
+Target: https://pqc-kyber-login.up.railway.app   user: augustine48566
+Sign-up -> https://pqc-kyber-login.up.railway.app/dashboard
 Dashboard decrypted text: Dear All Good luck with your Job interview with Bloomberg   checks: Yes,Yes
 Wrong password message: Wrong username or password.
-Login -> https://web-production-0c4f4e.up.railway.app/dashboard
+Login -> https://pqc-kyber-login.up.railway.app/dashboard
 API requests captured: 6; password visible in any request body: no
-Example /api/login request body (truncated): {"kid":"_9MNiF7MtzdGGuyY4wRyEA","kem_ciphertext":"yUiYUbw1TKRuTNC04/8F53d8TdLpSt+6HTWPX6gezZkrh8AjEpkmpDULeuVx/5UeDj4Uh14KO3uPl27HforM76HFUq9Y3jvemg9+aKSUXQkvSeU2WuhRj68dfpgZDIlpAQUHqxQbBgzubImQLBuApiFeWEY3aOui5HVEankIYk4yewzW1jnwmYOYFjSBztveTIfS66sxBkIyTCpXe9TYHHelsZ61jwzWNzEWxA95iGkQAWjkvD21k+4AZM...
+Example /api/login request body (truncated): {"kid":"Fv4WBztDtkzx7ul2ixQWhw","kem_ciphertext":"2wLzopKKl8xVLGfhcFals5lSnmVBnR6TNq+SBrpfMKUPeEkxrqkZP1UDIlwETgwYl004DQZxwo8rKI0oWaMdlxcKceRItc5SYEI3TbUcuVauL8wov9E08aR/1A7Y5tNyfJmtuEdUQ12QxOfQ+FPFicHRPkpS1DGLPqZSQ62jKnkIkHDMErcWrUdGmUfcbq237gs8k+Sw3px+FIh+NoIcjA5KZTwaEsKkJg4heJYrtRD2y6Mi3HBPLl5Wxt...

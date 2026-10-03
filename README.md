@@ -12,7 +12,7 @@ The project has two parts:
    password are encrypted in the browser with Kyber before they are sent. After
    login, a page encrypts and decrypts the same message.
 
-**Live site:** https://web-production-0c4f4e.up.railway.app
+**Live site:** https://pqc-kyber-login.up.railway.app
 
 ---
 
