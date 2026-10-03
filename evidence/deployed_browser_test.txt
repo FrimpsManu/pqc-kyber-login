@@ -1,7 +1,7 @@
-Target: https://web-production-0c4f4e.up.railway.app   user: augustine32721
+Target: https://web-production-0c4f4e.up.railway.app   user: augustine60398
 Sign-up -> https://web-production-0c4f4e.up.railway.app/dashboard
 Dashboard decrypted text: Dear All Good luck with your Job interview with Bloomberg   checks: Yes,Yes
 Wrong password message: Wrong username or password.
 Login -> https://web-production-0c4f4e.up.railway.app/dashboard
 API requests captured: 6; password visible in any request body: no
-Example /api/login request body (truncated): {"kid":"2HGJ7n5lz1ta4QK-B4df7w","kem_ciphertext":"xGynwUzojXHSs7HF9hxaRR4WjDDRsJnrlU+R9KUe13HIxjWTdJiK18ZT1xUd214b3752ur8JPkG9826EZTB74tgjWIRnocKtMNqMHyqcBcJHFqaLIuWAD+wk4C+h4t03gzMQ6/r04vvkuuA2BD35Uys0eobTK+566xb7NxiwpbR9qkOv5cjd9os0SfeeQpcJVtNBvaIKOEYcQsRjMJ2JxB7FwtWyPnrW6LbjbFMMnUgAaOVRxoatwF6zIR...
+Example /api/login request body (truncated): {"kid":"_9MNiF7MtzdGGuyY4wRyEA","kem_ciphertext":"yUiYUbw1TKRuTNC04/8F53d8TdLpSt+6HTWPX6gezZkrh8AjEpkmpDULeuVx/5UeDj4Uh14KO3uPl27HforM76HFUq9Y3jvemg9+aKSUXQkvSeU2WuhRj68dfpgZDIlpAQUHqxQbBgzubImQLBuApiFeWEY3aOui5HVEankIYk4yewzW1jnwmYOYFjSBztveTIfS66sxBkIyTCpXe9TYHHelsZ61jwzWNzEWxA95iGkQAWjkvD21k+4AZM...
